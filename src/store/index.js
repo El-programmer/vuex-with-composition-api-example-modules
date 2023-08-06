@@ -1,24 +1,29 @@
 import { createStore } from "vuex";
-
+import task from "./task";
 
 const store = createStore({
-    state:{
+
+    modules: {
+        task: task,
+    },
+
+    state: {
         title: "Vuex Store",
         notes: []
     },
-    getters:{
+    getters: {
         totalNotes(state) {
             return state.notes.length;
         }
     },
-    mutations:{
-        SAVE_NOTE(state,title) {
+    mutations: {
+        SAVE_NOTE(state, title) {
             state.notes.push(title);
         }
     },
-    actions:{
-        saveNote({commit}, title) {
-            commit('SAVE_NOTE',title);
+    actions: {
+        saveNote({ commit }, title) {
+            commit('SAVE_NOTE', title);
         }
     }
 });
